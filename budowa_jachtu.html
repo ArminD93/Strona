@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>  <!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
+
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8"/> <!-- charset zestaw znakow z klawiatury-->
+	<title>budynek</title>
+	<meta http-equiv="x-UA-Compatible" content="IE=edge,chrome=1"/>
+	
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
+	<link rel="stylesheet" href="css/flaticon.css" type="text/css"/>
+	<link href='https://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'> <!--okreslenie czcionek-->
+	
+	<script src="timer.js"></script> <!--podpinamy plik java script-->
+</head>
+
+<body onload="odliczanie();"> <!--należy ustawić wywołanie funkcji odliczanie w sekcji body, onload - przy załadowaniu strony-->
+
+	<div id="container"> 
+			<header>
+					<img src="D:\Users\Ja\Documenty\PG\semestr 2\Programowanie aplikacji internetowych\przykład\strona\img\log2.jpg" />
+						
+					<div id="logo"><a href="index.html" class="tilelinkhtml5">Żeglarstwo</a></div>
+					<div id="zegar">12:00:00</div>
+					<div style="clear: both;"></div>
+				</header>
+				<nav>
+					<a class="menu active" href="#">o mnie</a>
+					<a class="menu" href="#">Atualności</a>
+					<a class="menu" href="#">Inspiracje</a>
+					<a class="menu" href="#">kontakt</a>
+				</nav>
+	
+		<div class="rectangle">
+			<div id="logo"><a href="index.html" class="tilelinkhtml5">Budowa jachtu</a></div>
+			<div id="zegar">12:00:00</div>
+			<div style="clear: both;"></div>
+		</div>
+				
+		<div class="menu">
+			<div class="tile5">
+				<a href="budowa_jachtu.html" class="tilelink"><i class="flaticon-improvement"></i></i><br />Budowa jachtu</a>
+			</div>
+			<a href="teoria_zeglowania.html" class="tilelinkhtml5"> <!---inna metoda zapisu, charakter. dla html5-->
+				<div class="tile5" > <!--1 nr kafelka-->
+					<i class="icon-book"></i></i><br />Teoria żeglowania
+				</div>
+			</a>
+			<div style="clear: both;"></div>
+			
+			<a href="przepisy.html" class="tilelinkhtml5">
+				<div class="tile5">
+					<i class="flaticon-lighttower-with-light"></i><br />Przepisy
+				</div>
+			</a>
+			
+			<a href="meteorologia.html" class="tilelinkhtml5">
+				<div class="tile5">
+					<i class="demo-icon icon-cloud-sun"></i></i><br />Meteorologia
+				</div>
+			</a>
+			<div style="clear: both;"></div>
+			
+			<a href="zaglowce.html" class="tilelinkhtml5">
+				<div class="tile5">
+						<i class="flaticon-old-ship"></i><br />Żaglowce
+				</div>
+			</a>
+			
+			<a href="testy.html" class="tilelinkhtml5">
+				<div class="tile5">
+					<i class="icon-edit"></i><br />Testy
+				</div>
+			</a>
+			<div style="clear: both;"></div>
+		</div>
+		
+		
+		<div class="menu">
+			<div class="tile6">
+			Budowa jachtu <br /><br />
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna turpis, convallis eget tortor eu, mollis fringilla arcu. Suspendisse accumsan, tortor et tristique pretium, mauris augue congue leo, a dictum turpis sem non erat. Nam lacinia condimentum augue, sed fermentum elit viverra 
+			
+			</div>
+			
+	
+			<div style="clear: both;"></div>
+		</div>
+			<div style="clear: both;"></div><!---wyczysc działanie float:left'a dla dalszych nastepujacych div;ow -->
+			<div class="rectangle"> 2017 &copy; Armin Derencz </div>	
+	
+	</div>
+	
+</body>
+
+
+</html>
