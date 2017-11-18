@@ -1,143 +1,159 @@
-<DOCTYPE !HTML>  <!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
-<html lang="pl">
+<DOCTYPE !HTML>
+	<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
+	<html lang="pl">
 
-<head>
-	<meta charset="utf-8"/> <!-- charset zestaw znakow z klawiatury-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- sposób wyświetlania na urządzeniach mobilnych-->
-	<title>Żeglarstwo</title>
-	<meta http-equiv="x-UA-Compatible" content="IE=edge,chrome=1"/>
+	<head>
+		<meta charset="utf-8" />
+		<!-- charset zestaw znakow z klawiatury-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- sposób wyświetlania na urządzeniach mobilnych-->
+		<title>Żeglarstwo</title>
+		<meta http-equiv="x-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<link href='https://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'> <!--okreslenie czcionek-->
-	<link rel="icon" href="favicon.ico" type="image/x-icon"/> 
-	<link rel="shortcut icon" href="favicon.ico" /> <!--ikonka strony-->
+		<link href='https://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<!--okreslenie czcionek-->
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="favicon.ico" />
+		<!--ikonka strony-->
 
-	<link rel="stylesheet" href="style.css" type="text/css"/>
-	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
-	<link rel="stylesheet" href="css/flaticon.css" type="text/css"/>
-	
-	<!-- ################-->
-	<script src="timer.js"></script> 
-</head>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="stylesheet" href="css/fontello.css" type="text/css" />
+		<link rel="stylesheet" href="css/flaticon.css" type="text/css" />
 
-<body onload="odliczanie();"> <!--należy ustawić wywołanie funkcji odliczanie w sekcji body, onload - przy załadowaniu strony-->
-	<div id="container"> 
-	
-		<header>
-			<img src=".\img\log2.jpg" alt=Żeglarstwo/>
-				
-			<div id="logo"><a href="index.html" class="tilelinkhtml5">Żeglarstwo</a></div>
-			<div id="zegar">12:00:00</div>
-			<div style="clear: both;"></div>
-		</header>
-		<nav>
-			<a class="menu" href="budowa_jachtu.html" >
-				
-							Budowa jachtu
-					
-			</a>
-			<a class="menu" href="teoria_zeglowania.html">
-				
-							Teoria żeglowania
-					
-			</a>
-			<a class="menu" href="przepisy.html" >
-					
-							Przepisy
-					
-			</a>
-			<a class="menu" href="meteorologia.html" >
-					
-							Meteo
-					
-			</a>
-			<a  class="menu" href="zaglowce.html" >
-					
-							Żaglowce
-						
-			</a>
-			<a class="menu" href="testy.html" >
-					
-							Testy
-					
-			</a>
-		</nav>
+		<!-- ################-->
+		<script src="timer.js"></script>
+	</head>
 
-		<section class="main home"></section>
-		
-		<a href="przepisy.html" class="tilelinkhtml5">
+	<body onload="odliczanie();">
+		<!--należy ustawić wywołanie funkcji odliczanie w sekcji body, onload - przy załadowaniu strony-->
+		<div id="container">
+
+			<header>
+				<img src=".\img\log2.jpg" alt=Żeglarstwo/>
+
+				<div id="logo">
+					<a href="index.html" class="tilelinkhtml5">Żeglarstwo</a>
+				</div>
+				<div id="zegar">12:00:00</div>
+				<div style="clear: both;"></div>
+			</header>
+			<nav>
+				<a class="menu" href="budowa_jachtu.html">
+
+					Budowa jachtu
+
+				</a>
+				<a class="menu" href="teoria_zeglowania.html">
+
+					Teoria żeglowania
+
+				</a>
+				<a class="menu" href="przepisy.html">
+
+					Przepisy
+
+				</a>
+				<a class="menu" href="meteorologia.html">
+
+					Meteo
+
+				</a>
+				<a class="menu" href="zaglowce.html">
+
+					Żaglowce
+
+				</a>
+				<a class="menu" href="testy.html">
+
+					Testy
+
+				</a>
+			</nav>
+
+			<section class="main home"></section>
+
+			<a href="przepisy.html" class="tilelinkhtml5">
 				<div id="cf">
 					<img class="bottom" src=".\img\zaglowka.jpg" alt=Żeglarstwo/>
 					<div class="tile5">
-						<class="top" i class="flaticon-improvement"></i> <br />Budowa jachtu		
+						<class="top" i class="flaticon-improvement">
+							</i>
+							<br />Budowa jachtu
 					</div>
 				</div>
 			</a>
-			
-			
+			5--
+
 			<a href="meteorologia.html" class="tilelinkhtml5">
-					<div id="cf">
-						<img class="bottom" src=".\img\Boat.jpg" alt=Żeglarstwo/>
-						<div class="tile5">
-							<i class="icon-book"></i><br />Teoria żeglowania
-						</div>
+				<div id="cf">
+					<img class="bottom" src=".\img\Boat.jpg" alt=Żeglarstwo/>
+					<div class="tile5">
+						<i class="icon-book"></i>
+						<br />Teoria żeglowania
 					</div>
-			</a>	
-			
+				</div>
+			</a>
+
 			<a href="przepisy.html" class="tilelinkhtml5">
 				<div id="cf">
 					<img class="bottom" src=".\img\rules1.jpg" alt=Żeglarstwo/>
 					<div class="tile5">
-						<class="top" i class="flaticon-lighttower-with-light"></i> <br />Przepisy		
+						<class="top" i class="flaticon-lighttower-with-light">
+							</i>
+							<br />Przepisy
 					</div>
 				</div>
-			</a>		
-			
+			</a>
+
 			<a href="meteorologia.html" class="tilelinkhtml5">
-					<div id="cf">
-						<img class="bottom" src=".\img\sea-storm1.jpg" alt=Żeglarstwo/>
-						<div class="tile5">
-							<i class="demo-icon icon-cloud-sun"></i><br />Meteorologia
-						</div>
+				<div id="cf">
+					<img class="bottom" src=".\img\sea-storm1.jpg" alt=Żeglarstwo/>
+					<div class="tile5">
+						<i class="demo-icon icon-cloud-sun"></i>
+						<br />Meteorologia
 					</div>
+				</div>
 			</a>
-			
+
 			<a href="zaglowce.html" class="tilelinkhtml5">
-					<div id="cf">
-						<img class="bottom" src=".\img\tall-ships.jpg" alt=Żaglowce/>
-						<div class="tile5">
-							<i class="flaticon-old-ship"></i><br />Żaglowce
-						</div>
+				<div id="cf">
+					<img class="bottom" src=".\img\tall-ships.jpg" alt=Żaglowce/>
+					<div class="tile5">
+						<i class="flaticon-old-ship"></i>
+						<br />Żaglowce
 					</div>
+				</div>
 			</a>
-			
+
 			<a href="testy.html" class="tilelinkhtml5">
-					<div id="cf">
-						<img class="bottom" src=".\img\IMG_7802.jpg" alt=Żaglowce/>
-						<div class="tile5">
-							<i class="icon-edit"></i><br />Testy
-						</div>
+				<div id="cf">
+					<img class="bottom" src=".\img\IMG_7802.jpg" alt=Żaglowce/>
+					<div class="tile5">
+						<i class="icon-edit"></i>
+						<br />Testy
 					</div>
+				</div>
 			</a>
 			<div style="clear: both;"></div>
 		</div>
-		
-		
+
+
 		<article>
-				<h1> AKTUALNOŚCI </h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				 Curabitur magna turpis, convallis eget tortor eu,</p>
-				 <p>mollis fringilla arcu. Suspendisse accumsan, tortor et tristique pretium </p>
-				 <p>mauris augue congue leo, a dictum turpis sem non erat. Nam lacinia condimentum augue, sed fermentum elit viverra</p>
+			<h1> AKTUALNOŚCI </h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna turpis, convallis eget tortor eu,</p>
+			<p>mollis fringilla arcu. Suspendisse accumsan, tortor et tristique pretium </p>
+			<p>mauris augue congue leo, a dictum turpis sem non erat. Nam lacinia condimentum augue, sed fermentum elit viverra</p>
 		</article>
-		
-			
+
+
 		</section>
-		<div style="clear: both;"></div><!---wyczysc działanie float:left'a dla dalszych nastepujacych div;ow -->
-			<footer>&copy; Armin Derencz</footer> 
-	
-	</div>
-	
-</body>
+		<div style="clear: both;"></div>
+		<!---wyczysc działanie float:left'a dla dalszych nastepujacych div;ow -->
+		<footer>&copy; Armin Derencz</footer>
+
+		</div>
+
+	</body>
 
 
-</html>
+	</html>
