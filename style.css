@@ -4,8 +4,100 @@ body
 	color: #ffffff;
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
-	box-sizing: border-box;
+	
 }
+
+
+.grid {
+	display: grid;
+	grid-template-columns: 10% 1fr 1fr 10%; /* 1 frame*/
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-template-areas: 
+	". title title ." /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
+	". header header ." /* . oznacza puste pole*/
+	". content sidebar ."
+	". footer footer .";
+	grid-gap: 20px;
+}
+
+.title {
+	grid-area: title;
+	background-color: rgb(34, 50, 73);
+	font-size: 40px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+.header {
+	grid-area: header;
+	background-color: rgb(49, 55, 112);
+}
+.sidebar {
+	grid-area: sidebar;
+	background-color: rgb(24, 64, 110);
+	border-radius: 20%;
+}
+.content {
+	grid-area: content;
+	
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 1 frame*/
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas: 
+	"budowa teoria" /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
+	"przepisy meteo" /* . oznacza puste pole*/
+	"zaglowce testy";
+	grid-gap: 10px;
+	background-color: rgb(45, 243, 6);
+}
+.footer {
+	grid-area: footer;
+
+	height: 20px;
+	background-color: rgb(16, 31, 63);
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	margin: 15px 0;
+	font-size: 15px;
+}
+
+/* ################################## */
+.budowa {
+	grid-area: budowa;
+	background-color: rgb(221, 46, 99);
+}
+.teoria {
+	grid-area: teoria;
+	background-color: rgb(60, 51, 88);
+}
+.przepisy {
+	grid-area: przepisy;
+	background-color: rgb(52, 77, 223);
+}
+.meteo {
+	grid-area: meteo;
+	background-color: rgb(184, 187, 30);
+	
+}
+.zaglowce {
+	grid-area: zaglowce;
+	background-color: rgb(23, 105, 80);
+}
+.testy{
+	grid-area: testy;
+	background-color: blueviolet;
+}
+
+/* ################################## */
+
+
+
+
+
+
+
 
 #container /* diva -> #Nazwa diva, . do identyfikatora odwołujemy się przez # */
 {
@@ -14,59 +106,26 @@ body
 	
 }
 
-.main home /* class -> .nazwa_klasy, . do klasy odwołujemy się przez . */
-{
-	width: 960px;
-	margin: 20px;
-	text-align: center;
-}
 
-header img /*Oznacza weź img, który jest w header*/
+ img /*Oznacza weź img, który jest w header*/
 {
 	width: 100%;  /*szerokość obrazka ma być zawsze 100%*/
-	display: block;
+	
 } 
 
-nav {
-	overflow: hidden;
-}
 
-nav a {
-	display: block;
-	width: 15%;
-	height: 5%;
-	float: left;
-	color: whitesmoke;
-	text-align: center;
-	text-decoration: none;
-	background-color: #152e52;
-	padding: 10px 0;
-	font-size: 16px;
-	-webkit-transition: all 1s ease;
-	transition: all 1s ease;
-	border-radius: 55%;
-}
-
-
-nav a:hover {
-	background-color: rgb(19, 71, 143);
-	
-
-}
 
 .tile5
 {
+	
 	position: relative;
-	margin: 10px 0; 
-	width: 300x;
-	height: 300px;
+	
+	width: 100%;
+	height: 100%;
 	background-color: rgb(16, 31, 63);
 	text-align: center;
 	transition-duration: 2s;
 }
-
-
-
 
 a.tilelink /*link dla kafelka*/
 {
@@ -78,12 +137,13 @@ a.tilelink /*link dla kafelka*/
 
 a.tilelinkhtml5 /*link dla kafelka*/
 {
-	color: #063986; /*biały kolor czcionki*/
+	color: #064c86; /*biały kolor czcionki*/
 	display: block;
 	font-size: 30px;
 	text-decoration: none;/*usuwam podkreślenie, brak dekoracji tekstu, domyslnie jest underline czyli podkresl*/
 	float: left;
-	margin: 10px 10px;
+	margin: auto;
+	width: 100%;
 }
 
 #cf {
@@ -91,6 +151,7 @@ a.tilelinkhtml5 /*link dla kafelka*/
 	height:300px;
 	width:300px;
 	margin:0 auto;
+		
   }
   
   #cf img {
@@ -99,6 +160,7 @@ a.tilelinkhtml5 /*link dla kafelka*/
 	-moz-transition: opacity 0,2s ease-in-out;
 	-o-transition: opacity 0,2s ease-in-out;
 	transition: opacity 0,2s ease-in-out;
+	
   }
   
   #cf .tile5:hover {
@@ -112,6 +174,7 @@ article {
 	padding: 30px 40px;
 	background-color: #1d1c1c;
 	border-radius: 20%;
+	align-self: center;
 	
 }
 
@@ -130,99 +193,111 @@ article p {
 	font-size: 18px;
 	padding: 15px 0 15px 0;
 }
+#zegar
+{
+	float: right;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 50px;
+	text-align: left;
+	margin: 30px 0;
 
-header{
-	max-width: 1000px;
-	width:auto;
-	margin:auto;
-}
-header:after{
-	display: block;
-	position: relative;
-	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #040e24 100%);
-	margin-top: -150px;
-	height:150px;
-	width:100%;
-	content: '';
-
-}
-
-header img {
-	border-radius: 35%;
-	border: 10px solid rgb(8, 47, 80);
-	
-}
-section{
-	width: 50%;
-	float: left;	
 }
 
 
 #logo
 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 30px;
 	
-	float: left;
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 50px;
-	width: 600px;
-	text-align: left;
-	margin: 30px 0;
-}
-
-#zegar
-{
-	float: left;
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 50px;
-	text-align: left;
-	margin: 30px 0;
-
 }
 
 
-
-
-footer {
-	height: 30px;
-	background-color: rgb(16, 31, 63);
-	color: white;
-	line-height: 30px;
-	text-align: center;
-	margin: 15px 0;
-	font-size: 15px;
-}
-
-@media (max-width: 800px) { /*przegladarka zasstosuje to gdy bedzie rozdzielczosc okna mniejsza niz 800px*/
-	nav a {
-		width: 50%;
-		font-size: 22px;
+@media screen and (max-width: 800px){
+	.grid {
+		display: grid;
+		grid-template-columns:2fr 3fr; /* 1 frame*/
+		
+		grid-template-areas: 
+		"title   title" /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
+		"header  header" /* . oznacza puste pole*/
+		"content  content"
+		"sidebar  sidebar"
+		"footer ";
+		grid-gap: 5px;
 	}
-	article {
-		margin-top: 15px;
-		margin-bottom: 5px;
-		padding: 10px 10px;
-		background-color: #1d1c1c;
-		border-radius: 10%;
+	
+	.content {
+		grid-area: content;
+		
+		display: grid;
+		grid-template-columns: 1fr 1fr; /* 1 frame*/
+		grid-template-rows: 1 / 3;
+		grid-template-areas: 
+		"budowa teoria"
+		"przepisy meteo" 
+		"zaglowce testy";
+		grid-gap: 10px;
+		background-color: rgb(0, 0, 0);
 	}
-	article h1 {
-		font-size: 15px;
+	.sidebar {
+		grid-area: sidebar;
+		background-color: rgb(45, 37, 87);
+		border-radius: 20%;
+		width: 80%;
+	}
+
+	.tile5
+	{
+		
+		position: relative;
+		
+		width: 200px;
+		height: 200px;
+		background-color: rgb(16, 31, 63);
 		text-align: center;
-		margin: 0 5% 25px 5px;
-		padding-bottom: 10x;
-		border-bottom: 1px solid yellowgreen;
+		transition-duration: 2s;
+	}
+	#cf {
+		position:relative;
+		height:200px;
+		width:200px;
+		margin:0 auto;
+			
+	  }
+	  a.tilelinkhtml5 /*link dla kafelka*/
+	  {
+		  color: #064c86; /*biały kolor czcionki*/
+		  display: block;
+		  font-size: 20px;
+		  text-decoration: none;/*usuwam podkreślenie, brak dekoracji tekstu, domyslnie jest underline czyli podkresl*/
+		  float: left;
+		  margin: auto;
+		  width: 80%;
+	  }
+	  article {
+		margin-top: 30px;
+		margin-bottom: 20px;
+		padding: 30px 40px;
+		background-color: #1d1c1c;
+		border-radius: 20%;
+		align-self: center;
+		
+	}
+	
+	article h1 {
+		font-size: 20px;
+		text-align: center;
+		margin: 0 10% 30px 10px;
+		padding-bottom: 18x;
+		border-bottom: 2px solid yellowgreen;
 	
 	}
-
+	
 	article p {
 		text-align: justify; /*tekst wyjustowany*/
-		line-height: 15px;
-		font-size: 16px;
-		padding: 10px 0 10px 0;
+		line-height: 25px;
+		font-size: 18px;
+		padding: 15px 0 15px 0;
 	}
 }
-@media (max-width: 500px) { /*przegladarka zasstosuje to gdy bedzie rozdzielczosc okna mniejsza niz 800px*/
-	nav a {
-		width: 100%;
-	}
-}
-
+	
