@@ -24,7 +24,7 @@
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: none;
+
  
   display: inline-block;
   text-decoration: inherit;
@@ -55,8 +55,19 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-cloud-sun:before { content: '\e801'; font-size: 130px; margin-top:35px; } /* '' */
-.icon-book:before { content: '\e802'; font-size: 130px; margin-top:35px;} /* '' */
-.icon-hammer:before { content: '\e803'; font-size: 130px; margin-top:35px;} /* '' */
-.icon-edit:before { content: '\e805'; font-size: 130px; margin-top:35px;} /* '' */
-.icon-ship:before { content: '\f21a'; font-size: 130px; margin-top:35px;} /* '' */
+.icon-cloud-sun:before { content: '\e801'; font-size: 150px; margin-top:25px; } /* '' */
+.icon-book:before { content: '\e802'; font-size: 150px; margin-top:25px;} /* '' */
+.icon-hammer:before { content: '\e803'; font-size: 150px; margin-top:25px;} /* '' */
+.icon-edit:before { content: '\e805'; font-size: 150px; margin-top:25px;} /* '' */
+.icon-ship:before { content: '\f21a'; font-size: 150px; margin-top:25px;} /* '' */
+
+
+@media screen and (max-width: 800px) {
+
+  .icon-cloud-sun:before { content: '\e801'; font-size: 80px; margin-top:15px; } /* '' */
+  .icon-book:before { content: '\e802'; font-size: 80px; margin-top:15px;} /* '' */
+  .icon-hammer:before { content: '\e803'; font-size: 80px; margin-top:15px;} /* '' */
+  .icon-edit:before { content: '\e805'; font-size: 80px; margin-top:15px;} /* '' */
+  .icon-ship:before { content: '\f21a'; font-size: 80px; margin-top:15px;} /* '' */
+
+}

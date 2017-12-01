@@ -54,7 +54,7 @@
 
 			
 				<article>
-					<h1> TEORIA ŻEGLOWANIA<img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
+					<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
 					
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
 					 aliquam ligula non, consectetur magna. Mauris mauris odio, vulputate sit amet egestas nec, vehicula sit amet magna.

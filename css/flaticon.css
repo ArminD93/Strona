@@ -32,11 +32,22 @@ margin-left: 20px;
 
 
 
-.flaticon-lighttower-with-light:before { content: "\f100"; font-size: 130px; margin-top:35px; }
-.flaticon-old-ship:before { content: "\f101"; font-size: 130px; margin-top:35px; }
-.flaticon-yachting:before { content: "\f102"; font-size: 130px; margin-top:35px;}
-.flaticon-transport-2:before { content: "\f103"; font-size: 130px; margin-top:35px;}
-.flaticon-improvement:before { content: "\f104"; font-size: 130px; margin-top:35px;}
-.flaticon-transport-1:before { content: "\f105"; font-size: 130px; margin-top:35px;}
-.flaticon-transport:before { content: "\f106"; font-size: 130px; margin-top:35px;}
-.flaticon-big-anchor:before { content: "\f107"; font-size: 130px; margin-top:35px;}
+.flaticon-lighttower-with-light:before { content: "\f100"; font-size: 150px; margin-top:auto; }
+.flaticon-old-ship:before { content: "\f101"; font-size: 150px; margin-top:25px; }
+.flaticon-yachting:before { content: "\f102"; font-size: 150px; margin-top:25px; margin: left;}
+.flaticon-transport-2:before { content: "\f103"; font-size: 150px; margin-top:25px;}
+.flaticon-improvement:before { content: "\f104"; font-size: 150px; margin-top:35px;}
+.flaticon-transport-1:before { content: "\f105"; font-size: 150px; margin-top:15px;}
+.flaticon-transport:before { content: "\f106"; font-size: 150px; margin-top:25px;}
+.flaticon-big-anchor:before { content: "\f107"; font-size: 150px; margin-top:15px;}
+
+@media screen and (max-width: 800px) {
+  .flaticon-lighttower-with-light:before { content: "\f100"; font-size: 80px; margin-top:15px }
+	.flaticon-old-ship:before { content: "\f101"; font-size: 80; margin-top:15px; }
+	.flaticon-yachting:before { content: "\f102"; font-size: 80px; margin-top:15px;}
+	.flaticon-transport-2:before { content: "\f103"; font-size: 80px; margin-top:15px;}
+	.flaticon-improvement:before { content: "\f104"; font-size: 80px; margin-top:15px;}
+	.flaticon-transport-1:before { content: "\f105"; font-size: 80px; margin-top:15px;}
+	.flaticon-transport:before { content: "\f106"; font-size: 80px; margin-top:15px;}
+	.flaticon-big-anchor:before { content: "\f107"; font-size: 80px; margin-top:15px;}
+}
