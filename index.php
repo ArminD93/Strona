@@ -83,7 +83,7 @@
 							} else {
 							  echo 'wyników 0';
 							}
-							
+													
 					  ?>
 					</ul>
 				  </li>
