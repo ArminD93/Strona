@@ -55,7 +55,7 @@
 				  <span class="icon-bar"></span>
 				  <span class="icon-bar"></span>                        
 				</button>
-				<a class="navbar-brand" href="#">Żeglarstwo</a>
+				<a class="navbar-brand" href="index.php">Żeglarstwo</a>
 			  </div>
 			  <div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
@@ -91,6 +91,7 @@
 				  <li><a href="#">Kontakt</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+				  
 				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
@@ -144,7 +145,7 @@
 		
 			
 				<div class="budowa">
-					<a href="budowa_jachtu.html" class="tilelinkhtml5">
+					<a href="budowa_jachtu.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\zaglowka.jpg" alt=Żeglarstwo/>
 							<div class="tile5">
@@ -156,7 +157,7 @@
 					</a>
 				</div>
 				<div class="teoria">
-					<a href="teoria_zeglowania.html" class="tilelinkhtml5">
+					<a href="teoria_zeglowania.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\Boat.jpg" alt=Żeglarstwo/>
 							<div class="tile5">
@@ -168,7 +169,7 @@
 
 				</div>
 				<div class="przepisy">
-					<a href="przepisy.html" class="tilelinkhtml5">
+					<a href="przepisy.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\unnamed.png" alt=Żeglarstwo/>
 							<div class="tile5">
@@ -180,7 +181,7 @@
 					</a>
 				</div>
 				<div class="meteo">
-					<a href="meteorologia.html" class="tilelinkhtml5">
+					<a href="meteorologia.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\sea-storm1.jpg" alt=Żeglarstwo/>
 							<div class="tile5">
@@ -191,7 +192,7 @@
 					</a>
 				</div>
 				<div class="zaglowce">
-					<a href="zaglowce.html" class="tilelinkhtml5">
+					<a href="zaglowce.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\tall-ships.jpg" alt=Żaglowce/>
 							<div class="tile5">
@@ -202,7 +203,7 @@
 					</a>
 				</div>
 				<div class="testy">
-					<a href="testy.html" class="tilelinkhtml5">
+					<a href="testy.php" class="tilelinkhtml5">
 						<div id="cf">
 							<img class="bottom" src=".\img\IMG_7802.jpg" alt=Żaglowce/>
 							<div class="tile5">

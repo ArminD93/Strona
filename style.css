@@ -13,8 +13,9 @@ body
 	grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr 1fr 5%; /* 1 frame*/
 	grid-template-rows: 1fr;
 	grid-template-areas: 
-	". title title title title title title ." /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
+	 /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
 	". header header header header header header ." /* . oznacza puste pole*/
+	". title title title title title title ."
 	". menu menu menu menu menu menu ."
 	". budowa teoria article article article article  ."
 	". przepisy meteo article article article article ."
@@ -175,11 +176,9 @@ article p {
 {
 	float: right;
 	font-family: 'Josefin Sans', sans-serif;
-	font-size: 50px;
-	text-align: left;
-	margin: 30px 0;
-
-}
+	font-size: 20px;
+	
+	}
 
 .pic {
 	float: right;
