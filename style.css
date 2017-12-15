@@ -17,7 +17,7 @@ body
 	". header header header header header header ." /* . oznacza puste pole*/
 	". title title title title title title ."
 	". menu menu menu menu menu menu ."
-	". budowa teoria article article article article  ."
+	". budowa teoria article article article article ."
 	". przepisy meteo article article article article ."
 	". zaglowce testy article article article article ."
 	". footer footer footer footer footer footer.";
@@ -152,10 +152,25 @@ article {
 	grid-area: article;
 	padding: 30px 30px;
 	background-color: #1c1d1f;
-	border-radius: 20%;
+	border-radius: 20%;	
+
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 1 frame*/
 	
+	grid-template-areas:
+	" text img img "
+	" text img img "	
+	" text text text ",
 	
 }
+
+
+
+.img {
+	height:100px;
+	width:100px;
+}
+
 
 article h1 {
 	font-size: 30px;
