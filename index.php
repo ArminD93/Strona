@@ -29,6 +29,7 @@
 
 		<!-- ################-->
 		<script src="timer.js"></script>
+		<script src="slider.js"></script>
 	</head>
 
 	<body onload="odliczanie();">
@@ -44,9 +45,20 @@
 				<i class="flaticon-big-anchor" ></i>
 				
 			</div>
-			<div class="header">	
-					<img src=".\img\log2.jpg" alt=Żeglarstwo/>
-			</div>
+
+			<div class="header" id="main-slider"><!-- outermost container element -->
+					<div class="header-wrapper"><!-- innermost wrapper element -->
+							<img src=".\img\log2.jpg" alt="First" class="slide" /><!-- slides -->
+							<img src=".\img\2.jpg" alt="Second" class="slide" />
+							<img src=".\img\3.jpg" alt="Third" class="slide" />
+							<img src=".\img\5.png" alt="Third" class="slide" />
+					</div>
+			</div>	
+
+
+		<!--	<div class="header">	
+				 <img src=".\img\log2.jpg" alt=Żeglarstwo/>
+			</div>-->
 
 			<div class="menu">
 					
