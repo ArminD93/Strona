@@ -10,7 +10,7 @@ body
 
 .grid {
 	display: grid;
-	grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr 1fr 5%; /* 1 frame*/
+	grid-template-columns: 2% 1fr 1fr 1fr 1fr 1fr 1fr 2%; /* 1 frame*/
 	grid-template-rows: 1fr;
 	grid-template-areas: 
 	 /*podajemy dwa razy title, bo wyżej jest 2 razy 1fr w columns -> dwie kolumny*/
@@ -177,8 +177,8 @@ article {
 	grid-template-columns: 1fr 1fr; /* 1 frame*/
 	
 	grid-template-areas:
-	" text img img "
-	" text img img "	
+	" text text img "
+	" text text text "	
 	" text text text ",
 	
 }
