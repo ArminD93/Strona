@@ -60,6 +60,7 @@
 				 <img src=".\img\log2.jpg" alt=Żeglarstwo/>
 			</div>-->
 
+
 			<div class="menu">
 					
 			<nav class="navbar navbar-inverse">
