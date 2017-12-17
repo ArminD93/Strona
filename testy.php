@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: login.php');
+		exit();
+	}
+	
+?>
+
 <DOCTYPE !HTML>
 	<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
 	<html lang="pl">
@@ -109,24 +121,17 @@
 
 			
 				<article>
-					<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
-					</p>
-		
-					<button type="button" onclick="foo()">Click Me</button>
+				<?php
 				
-									
-<script>
-$(function(){
-    $('button').click(function(){
-        $.ajax({
-            url:'script.php',
-            success:function(response){ script.php; }
-        }); // this will alert the code generated in example.php
-    });
-});
-</script>
+					echo "<p>Witaj ".$_SESSION['user'].'! [ <a href="logout.php">Wyloguj się!</a> ]</p>';
+					echo "<p><b>Drewno</b>: ".$_SESSION['drewno'];
+					echo " | <b>Kamień</b>: ".$_SESSION['kamien'];
+					echo " | <b>Zboże</b>: ".$_SESSION['zboze']."</p>";
+					
+					echo "<p><b>E-mail</b>: ".$_SESSION['email'];
+					echo "<br /><b>Dni premium</b>: ".$_SESSION['dnipremium']."</p>";
+					
+				?>
 				</article>
 		
 			

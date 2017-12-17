@@ -109,7 +109,7 @@
 					<ul class="nav navbar-nav navbar-right">
 					
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 				</div>
 				</div>
@@ -121,57 +121,72 @@
 			
 				<article>
 
-							<div class="text">
-									<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
-										
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
-										aliquam ligula non, consectetur magna. Mauris mauris odio, vulputate sit amet egestas nec, vehicula sit amet magna.
-										Fusce magna lectus, cursus non aliquet nec, euismod et nisi. Sed pulvinar lobortis pharetra. 
-										In nec neque eu ex mattis condimentum. Nulla eget enim vitae est pellentesque finibus. Duis elementum facilisis dignissim.
-										Quisque non sagittis leo. Donec maximus risus sit amet tellus pharetra, non finibus nisi vestibulum. 
-										Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				<?php
+				
+					session_start();
+					
+					if ((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
+					{
+						header('Location: index.php');
+						exit();
+					}
+				
+					require_once "connect.php";
+				
+					$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+					
+					if ($polaczenie->connect_errno!=0)
+					{
+						echo "Error: ".$polaczenie->connect_errno;
+					}
+					else
+					{
+						$login = $_POST['login'];
+						$haslo = $_POST['haslo'];
+						
+						$login = htmlentities($login, ENT_QUOTES, "UTF-8");
+						$haslo = htmlentities($haslo, ENT_QUOTES, "UTF-8");
+					
+						if ($rezultat = @$polaczenie->query(
+						sprintf("SELECT * FROM uzytkownicy WHERE user='%s' AND pass='%s'",
+						mysqli_real_escape_string($polaczenie,$login),
+						mysqli_real_escape_string($polaczenie,$haslo))))
+						{
+							$ilu_userow = $rezultat->num_rows;
+							if($ilu_userow>0)
+							{
+								$_SESSION['zalogowany'] = true;
+								
+								$wiersz = $rezultat->fetch_assoc();
+								$_SESSION['id'] = $wiersz['id'];
+								$_SESSION['user'] = $wiersz['user'];
+								$_SESSION['drewno'] = $wiersz['drewno'];
+								$_SESSION['kamien'] = $wiersz['kamien'];
+								$_SESSION['zboze'] = $wiersz['zboze'];
+								$_SESSION['email'] = $wiersz['email'];
+								$_SESSION['dnipremium'] = $wiersz['dnipremium'];
+								
+								unset($_SESSION['blad']);
+								$rezultat->free_result();
+								header('Location: testy.php');
+								
+							} else {
+								
+								$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+								header('Location: login.php');
+								
+							}
 							
-										<p>Curabitur dignissim est libero, et pellentesque enim facilisis nec. In eget convallis nisl. Vestibulum sed urna semper,
-										cursus sapien sed, tincidunt sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos 
-										himenaeos. Suspendisse pretium quis velit varius lacinia. Sed vel feugiat magna. Sed sodales pellentesque nisi. 
-										Cras ornare tortor magna, vitae maximus odio maximus at. Phasellus ultricies erat nec nisl pharetra tristique. 
-										Nulla convallis turpis id scelerisque sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-										per inceptos himenaeos. Fusce vel gravida lacus. Integer ac congue nulla, at luctus lorem. Morbi fermentum lorem ut mollis 
-										tempor.</p>
-
-										<p>Aliquam viverra neque in ipsum rhoncus, quis pulvinar mi aliquam. Etiam tristique nisl nec ante venenatis ultricies.
-										Aliquam quis urna sagittis, vulputate mauris at, cursus purus. Aliquam gravida consequat massa sit amet laoreet. 
-										Proin quis ullamcorper nisl. Nullam dictum eu felis ut posuere. Pellentesque tristique molestie scelerisque.
-										Etiam egestas mattis dui. Praesent id malesuada nisi. Sed eu quam risus. Nullam quis urna arcu. In hac habitasse 
-										platea dictumst. Nunc faucibus velit ex, nec suscipit lorem aliquam et. Aenean ornare mi odio, ut imperdiet enim 
-										fringilla ac. Sed sed nisl eu tellus convallis ornare ut at nunc. Nam id sollicitudin turpis, at facilisis turpis.</p>
-										
-										<p>Quisque risus nunc, imperdiet vitae venenatis sit amet, dictum in nibh. In interdum leo sit amet elit commodo,
-										a aliquam eros pharetra. Maecenas maximus eu lorem eget hendrerit. Donec nec pulvinar odio. Cras luctus hendrerit 
-										nunc, eu tempor magna eleifend vel. Aenean blandit pellentesque sem eget lobortis. Suspendisse potenti. 
-										Sed velit mauris, facilisis vel nulla eu, mollis pellentesque eros. Curabitur faucibus quam ante, vitae eleifend 
-										libero interdum quis. Fusce vitae eleifend lectus. Sed nec ipsum commodo metus porttitor consectetur.</p>
-
-							</div>
+						}
+						
+						$polaczenie->close();
+					}
+					
+				?>
 								
 
 							
 
-								<button type="button" onclick="foo()">Click Me</button>
-				
-					<script type="text/javascript">
-				 function foo () {
-					$.ajax({
-						url:"script.php", //the page containing php script
-						type: "POST", //request type
-						success:function(result){
-						 alert(result);
-					 }
-				 });
-		 }
-					</script>
-
-<input type="button" value="Say Hi!" onclick="location='script.php'" />
 				
 				</article>
 

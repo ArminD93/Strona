@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	{
+		header('Location: testy.php');
+		exit();
+	}
+
+?>
+
 <DOCTYPE !HTML>
 	<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
 	<html lang="pl">
@@ -109,7 +121,7 @@
 					<ul class="nav navbar-nav navbar-right">
 					
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 				</div>
 				</div>
@@ -124,34 +136,18 @@
 							<div class="text">
 									<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
 										
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
-										aliquam ligula non, consectetur magna. Mauris mauris odio, vulputate sit amet egestas nec, vehicula sit amet magna.
-										Fusce magna lectus, cursus non aliquet nec, euismod et nisi. Sed pulvinar lobortis pharetra. 
-										In nec neque eu ex mattis condimentum. Nulla eget enim vitae est pellentesque finibus. Duis elementum facilisis dignissim.
-										Quisque non sagittis leo. Donec maximus risus sit amet tellus pharetra, non finibus nisi vestibulum. 
-										Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-							
-										<p>Curabitur dignissim est libero, et pellentesque enim facilisis nec. In eget convallis nisl. Vestibulum sed urna semper,
-										cursus sapien sed, tincidunt sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos 
-										himenaeos. Suspendisse pretium quis velit varius lacinia. Sed vel feugiat magna. Sed sodales pellentesque nisi. 
-										Cras ornare tortor magna, vitae maximus odio maximus at. Phasellus ultricies erat nec nisl pharetra tristique. 
-										Nulla convallis turpis id scelerisque sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-										per inceptos himenaeos. Fusce vel gravida lacus. Integer ac congue nulla, at luctus lorem. Morbi fermentum lorem ut mollis 
-										tempor.</p>
-
-										<p>Aliquam viverra neque in ipsum rhoncus, quis pulvinar mi aliquam. Etiam tristique nisl nec ante venenatis ultricies.
-										Aliquam quis urna sagittis, vulputate mauris at, cursus purus. Aliquam gravida consequat massa sit amet laoreet. 
-										Proin quis ullamcorper nisl. Nullam dictum eu felis ut posuere. Pellentesque tristique molestie scelerisque.
-										Etiam egestas mattis dui. Praesent id malesuada nisi. Sed eu quam risus. Nullam quis urna arcu. In hac habitasse 
-										platea dictumst. Nunc faucibus velit ex, nec suscipit lorem aliquam et. Aenean ornare mi odio, ut imperdiet enim 
-										fringilla ac. Sed sed nisl eu tellus convallis ornare ut at nunc. Nam id sollicitudin turpis, at facilisis turpis.</p>
-										
-										<p>Quisque risus nunc, imperdiet vitae venenatis sit amet, dictum in nibh. In interdum leo sit amet elit commodo,
-										a aliquam eros pharetra. Maecenas maximus eu lorem eget hendrerit. Donec nec pulvinar odio. Cras luctus hendrerit 
-										nunc, eu tempor magna eleifend vel. Aenean blandit pellentesque sem eget lobortis. Suspendisse potenti. 
-										Sed velit mauris, facilisis vel nulla eu, mollis pellentesque eros. Curabitur faucibus quam ante, vitae eleifend 
-										libero interdum quis. Fusce vitae eleifend lectus. Sed nec ipsum commodo metus porttitor consectetur.</p>
-
+									<form action="zaloguj.php" method="post">
+									
+										Login: <br /> <input type="text" name="login" /> <br />
+										Hasło: <br /> <input type="password" name="haslo" /> <br /><br />
+										<input type="submit" value="Zaloguj się" />
+									
+									</form>
+									
+								<?php
+									if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+								?>
+								
 							</div>
 								
 
@@ -171,7 +167,7 @@
 		 }
 					</script>
 
-<input type="button" value="Say Hi!" onclick="location='script.php'" />
+<input type="button" value="Say Hi!" onclick="location='quiz.php'" />
 				
 				</article>
 
