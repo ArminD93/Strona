@@ -11,7 +11,7 @@
 ?>
 
 <DOCTYPE !HTML>
-	<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
+<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
 	<html lang="pl">
 
 	<head>
@@ -29,12 +29,11 @@
 		<!--ikonka strony-->
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 		 <link rel="stylesheet" href="lightbox2-master/dist/css/lightbox.min.css">
-
-		 
 
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<link rel="stylesheet" href="css/fontello.css" type="text/css" />
@@ -42,15 +41,15 @@
 
 		<!-- ################-->
 		<script src="timer.js"></script>
-		<script type="text/javascript" src="get_data.js"></script>
-
+		<script src="slider.js"></script>
+		<script src="LogReg.js"></script>
 	</head>
 
 	<body onload="odliczanie();">
 		<!--należy ustawić wywołanie funkcji odliczanie w sekcji body, onload - przy załadowaniu strony-->
 
 		<div class="grid">
-			<div class="title">
+		<div class="title">
 					<i class="flaticon-yachting" ></i>
 				Żeglarstwo
 				
@@ -59,9 +58,15 @@
 				<i class="flaticon-big-anchor" ></i>
 				
 			</div>
-			<div class="header">	
-					<img src=".\img\log2.jpg" alt=Żeglarstwo/>
-			</div>
+
+			<div class="header" id="main-slider"><!-- outermost container element -->
+					<div class="header-wrapper"><!-- innermost wrapper element -->
+							<img src=".\img\log2.jpg" alt="First" class="slide" /><!-- slides -->
+							<img src=".\img\2.jpg" alt="Second" class="slide" />
+							<img src=".\img\3.jpg" alt="Third" class="slide" />
+							<img src=".\img\5.png" alt="Third" class="slide" />
+					</div>
+			</div>	
 
 			<div class="menu">
 					
@@ -77,9 +82,9 @@
 			  </div>
 			  <div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-				  <li class="active"><a href="#">Home</a></li>
+				  
 				  <li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Inne <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					 <?php 
 							$polaczenie = @mysqli_connect('localhost', 'root', '', 'pai_derencz');
@@ -106,11 +111,14 @@
 					</ul>
 				  </li>
 				  <li><a href="#">O mnie</a></li>
-				  <li><a href="#">Kontakt</a></li>
+				  <li class="active"><a href="#">Kontakt</a></li>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><?php echo "<b>E-mail</b>: ".$_SESSION['email'];?></li>
+					<li><?php echo " Witaj ".$_SESSION['user'].'!'; ?></li>
 				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				  <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Wyloguj się</a></li>
 				</ul>
 			  </div>
 			</div>
@@ -121,17 +129,7 @@
 
 			
 				<article>
-				<?php
-				
-					echo "<p>Witaj ".$_SESSION['user'].'! [ <a href="logout.php">Wyloguj się!</a> ]</p>';
-					echo "<p><b>Drewno</b>: ".$_SESSION['drewno'];
-					echo " | <b>Kamień</b>: ".$_SESSION['kamien'];
-					echo " | <b>Zboże</b>: ".$_SESSION['zboze']."</p>";
-					
-					echo "<p><b>E-mail</b>: ".$_SESSION['email'];
-					echo "<br /><b>Dni premium</b>: ".$_SESSION['dnipremium']."</p>";
-					
-				?>
+			
 				</article>
 		
 			

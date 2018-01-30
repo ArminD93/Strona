@@ -134,7 +134,7 @@
 				<article>
 
 							<div class="text">
-									<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
+									
 										
 									<form action="zaloguj.php" method="post">
 									
@@ -153,21 +153,6 @@
 
 							
 
-								<button type="button" onclick="foo()">Click Me</button>
-				
-					<script type="text/javascript">
-				 function foo () {
-					$.ajax({
-						url:"script.php", //the page containing php script
-						type: "POST", //request type
-						success:function(result){
-						 alert(result);
-					 }
-				 });
-		 }
-					</script>
-
-<input type="button" value="Say Hi!" onclick="location='quiz.php'" />
 				
 				</article>
 

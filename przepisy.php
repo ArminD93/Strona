@@ -42,7 +42,7 @@
 				
 			</div>
 			<div class="header">	
-					<img src=".\img\log2.jpg" alt=Żeglarstwo/>
+					<img src=".\img\zaglowki.jpg" alt=Żeglarstwo/>
 			</div>
 
 			<div class="menu">

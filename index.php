@@ -1,3 +1,154 @@
+<?php
+//Kawałek kodu, który nas przekieruje na strone testy.php, jeśli będziemy zalogowani
+	session_start();
+	
+	if (isset($_POST['email']))
+	{
+		//Udana walidacja
+		$wszystko_OK=true;
+
+		//Sprawdź poprawność nickname'a
+		$nick = $_POST['nick'];
+
+		//Sprawdzenie długości nick'a
+		if ((strlen($nick)<3) || (strlen($nick)>20))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_nick']="Nick musi posiadać od 3 do 20 znaków!";
+		}
+		
+		if (ctype_alnum($nick)==false) //sprawdz czy wsszystkie znaki alfanumeryczne
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_nick']="Nick może składać się tylko z liter i cyfr (bez polskich znaków)";
+		}
+		
+		// Sprawdź poprawność adresu email
+		$email = $_POST['email']; //wczesniej input'owi nadaliśmy nazwe email
+		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL); //filtr stosowany do walidacji email, pozwalajcy usunac wszystkie niepoprwne znaki z tego adresu
+		
+		if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_email']="Podaj poprawny adres e-mail!";
+		}
+		
+		//Sprawdź poprawność hasła
+		$haslo1 = $_POST['haslo1'];
+		$haslo2 = $_POST['haslo2'];
+		
+		if ((strlen($haslo1)<8) || (strlen($haslo1)>20))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_haslo']="Hasło musi posiadać od 8 do 20 znaków!";
+		}
+		
+		if ($haslo1!=$haslo2)
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_haslo']="Podane hasła nie są identyczne!";
+		}	
+
+		$haslo_hash = password_hash($haslo1, PASSWORD_DEFAULT); //hashowanie hasla i dodanie "soli" - kiliku losowych znakow
+		
+		
+		//Czy zaakceptowano regulamin?
+		if (!isset($_POST['regulamin']))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_regulamin']="Potwierdź akceptację regulaminu!";
+		}				
+		
+		//walidacja czy nie bot
+		$sekret = "6Lcntj0UAAAAAHlkiYOPtc1boSbBCQbrDnH8xRAx";								//& - drugą zmienną doklejamy symbolem &
+		
+		$sprawdz = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$sekret.'&response='.$_POST['g-recaptcha-response']);
+		
+		$odpowiedz = json_decode($sprawdz); //zdekoduj wartość z formatu json - javaScript Object notation - lekki format wymiany danych bazujący na podzbiorze język JS.
+		
+		if ($odpowiedz->success==false)
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_bot']="Potwierdź, że nie jesteś botem!";
+		}		
+		
+		//Zapamiętaj wprowadzone dane
+		$_SESSION['fr_nick'] = $nick;
+		$_SESSION['fr_email'] = $email;
+		$_SESSION['fr_haslo1'] = $haslo1;
+		$_SESSION['fr_haslo2'] = $haslo2;
+		if (isset($_POST['regulamin'])) $_SESSION['fr_regulamin'] = true;
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);//informowanie php, ze chcemy wyrzucac(raportowac) wyjatki a nie ostrzezenia
+		
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno()); //rzuc nowym wyjatkiem po to by sekcja catch zlapala go
+			}
+			else
+			{
+				//Czy email już istnieje?
+				$rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE email='$email'");
+				
+				if (!$rezultat) throw new Exception($polaczenie->error);
+				
+				$ile_takich_maili = $rezultat->num_rows;
+				if($ile_takich_maili>0)
+				{
+					$wszystko_OK=false;
+					$_SESSION['e_email']="Istnieje już konto przypisane do tego adresu e-mail!";
+				}		
+
+				//Czy nick jest już zarezerwowany?
+				$rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE user='$nick'");
+				
+				if (!$rezultat) throw new Exception($polaczenie->error);
+				
+				$ile_takich_nickow = $rezultat->num_rows;
+				if($ile_takich_nickow>0)
+				{
+					$wszystko_OK=false;
+					$_SESSION['e_nick']="Istnieje już użytkownik o takim nicku! Wybierz inny.";
+				}
+				
+				if ($wszystko_OK==true)
+				{
+					//Hurra, wszystkie testy zaliczone, dodajemy użytkonikwa do bazy
+					
+					if ($polaczenie->query("INSERT INTO uzytkownicy VALUES (NULL, '$nick', '$haslo_hash', '$email')"))
+					{
+						$_SESSION['udanarejestracja']=true;
+						header('Location: witamy.php');
+					}
+					else
+					{
+						throw new Exception($polaczenie->error);
+					}
+					
+				}
+				
+				$polaczenie->close();
+			}
+			
+		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//echo '<br />Informacja developerska: '.$e;
+		}
+		
+	}
+
+	
+	
+
+?>
+
+
 <DOCTYPE !HTML>
 	<!-- linia informuje przeglądarkę, w której wersji html,  postanowilismy okodowac dokument  - HTML ozn, że w html 5-->
 	<html lang="pl">
@@ -30,6 +181,9 @@
 		<!-- ################-->
 		<script src="timer.js"></script>
 		<script src="slider.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		
+		
 	</head>
 
 	<body onload="odliczanie();">
@@ -105,23 +259,27 @@
 					</li>
 					<li><a href="#">O mnie</a></li>
 					<li><a href="#">Kontakt</a></li>
+					<li><a href="register.php">Zarejestruj</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
+					<li><button id="myBtn" class="button">Zaloguj</button></li>
 					
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					
+					
 					</ul>
 				</div>
 				</div>
 		  </nav>
 			</div>
-
+			
 
 
 			
 				<article>
 
 							<div class="text">
+
+							
 									<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
 										
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
@@ -157,21 +315,9 @@
 
 							
 
-								<button type="button" onclick="foo()">Click Me</button>
+								
 				
-					<script type="text/javascript">
-				 function foo () {
-					$.ajax({
-						url:"script.php", //the page containing php script
-						type: "POST", //request type
-						success:function(result){
-						 alert(result);
-					 }
-				 });
-		 }
-					</script>
-
-<input type="button" value="Say Hi!" onclick="location='script.php'" />
+		
 				
 				</article>
 
@@ -257,6 +403,70 @@
 
 			
 		</div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Witamy</h2>
+    </div>
+    <div class="modal-body">
+      <p><p>Zaloguj się do swojego konta</p>
+      <p><form action="zaloguj.php" method="post">
+									
+										Login: <br /> <input type="text" name="login" /> <br />
+										Hasło: <br /> <input type="password" name="haslo" /> <br /><br />
+										<input type="submit" value="Zaloguj się" />
+									
+									</form>
+									
+								<?php
+									if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+								?></p></p>
+    </div>
+    <div class="modal-footer">
+      <h3></h3>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+		
 
 
 	</body>

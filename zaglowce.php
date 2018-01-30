@@ -23,9 +23,11 @@
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 		<link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+		<link rel="stylesheet" href="css/lightbox.min.css">
 
 		<!-- ################-->
 		<script src="timer.js"></script>
+		<script src="js/lightbox-plus-jquery.min.js"></script>
 	</head>
 
 	<body onload="odliczanie();">
@@ -42,7 +44,7 @@
 				
 			</div>
 			<div class="header">	
-					<img src=".\img\log2.jpg" alt=Żeglarstwo/>
+					<img src=".\img\zaglowce.jpg" alt=Żeglarstwo/>
 			</div>
 
 			<div class="menu">
@@ -64,6 +66,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					 <?php 
+					 
 							$polaczenie = @mysqli_connect('localhost', 'root', '', 'pai_derencz');
 							if (!$polaczenie) {
 							  die('Wystąpił błąd połączenia: ' . mysqli_connect_errno());
@@ -103,44 +106,36 @@
 
 			
 				<article>
-					<h1> AKTUALNOŚCI  <img class="pic" src=".\img\boats-icon-png.png" alt="żaglówka" /> </h1>
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non dui nibh. Mauris eget ex tempor,
-					 aliquam ligula non, consectetur magna. Mauris mauris odio, vulputate sit amet egestas nec, vehicula sit amet magna.
-					 Fusce magna lectus, cursus non aliquet nec, euismod et nisi. Sed pulvinar lobortis pharetra. 
-					 In nec neque eu ex mattis condimentum. Nulla eget enim vitae est pellentesque finibus. Duis elementum facilisis dignissim.
-					 Quisque non sagittis leo. Donec maximus risus sit amet tellus pharetra, non finibus nisi vestibulum. 
-					 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-		
-					<p>Curabitur dignissim est libero, et pellentesque enim facilisis nec. In eget convallis nisl. Vestibulum sed urna semper,
-					 cursus sapien sed, tincidunt sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos 
-					 himenaeos. Suspendisse pretium quis velit varius lacinia. Sed vel feugiat magna. Sed sodales pellentesque nisi. 
-					 Cras ornare tortor magna, vitae maximus odio maximus at. Phasellus ultricies erat nec nisl pharetra tristique. 
-					 Nulla convallis turpis id scelerisque sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-					 per inceptos himenaeos. Fusce vel gravida lacus. Integer ac congue nulla, at luctus lorem. Morbi fermentum lorem ut mollis 
-					 tempor.</p>
+					<h1> Żaglowce </h1>
+					<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "zagle_pytania";
 
-					<p>Aliquam viverra neque in ipsum rhoncus, quis pulvinar mi aliquam. Etiam tristique nisl nec ante venenatis ultricies.
-					 Aliquam quis urna sagittis, vulputate mauris at, cursus purus. Aliquam gravida consequat massa sit amet laoreet. 
-					 Proin quis ullamcorper nisl. Nullam dictum eu felis ut posuere. Pellentesque tristique molestie scelerisque.
-					 Etiam egestas mattis dui. Praesent id malesuada nisi. Sed eu quam risus. Nullam quis urna arcu. In hac habitasse 
-					 platea dictumst. Nunc faucibus velit ex, nec suscipit lorem aliquam et. Aenean ornare mi odio, ut imperdiet enim 
-					 fringilla ac. Sed sed nisl eu tellus convallis ornare ut at nunc. Nam id sollicitudin turpis, at facilisis turpis.</p>
-					
-					 <p>Quisque risus nunc, imperdiet vitae venenatis sit amet, dictum in nibh. In interdum leo sit amet elit commodo,
-					 a aliquam eros pharetra. Maecenas maximus eu lorem eget hendrerit. Donec nec pulvinar odio. Cras luctus hendrerit 
-					 nunc, eu tempor magna eleifend vel. Aenean blandit pellentesque sem eget lobortis. Suspendisse potenti. 
-					 Sed velit mauris, facilisis vel nulla eu, mollis pellentesque eros. Curabitur faucibus quam ante, vitae eleifend 
-					 libero interdum quis. Fusce vitae eleifend lectus. Sed nec ipsum commodo metus porttitor consectetur.</p>
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
-					<p>Sed metus ipsum, volutpat vel enim vel, venenatis tempus sem. Donec magna libero, venenatis eu blandit vitae, 
-					molestie in erat. Nunc vitae finibus velit. In hac habitasse platea dictumst. In fringilla consectetur luctus. 
-					Nam lorem tellus, iaculis ac arcu id, maximus gravida erat. Quisque a leo pharetra, vehicula dolor sed, tempus sapien.
-					Vivamus quis finibus purus, eget ultrices nulla. Nam in ante tincidunt tellus placerat tempus. Donec scelerisque ipsum 
-					vel ante commodo, et volutpat nisl luctus. Curabitur dui velit, dictum nec neque ac, tincidunt commodo sem. 
-					Proin laoreet sit amet velit rhoncus fermentum. Ut accumsan neque ac velit dapibus, id placerat sapien scelerisque. 
-					Etiam quis dui dignissim, congue felis ut, eleifend arcu.</p>
-				</article>
+$sql = "SELECT name, normal, small FROM gallery";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_array()) {
+				//echo $row['nazwa'] . " " . $row['img']. " " . $row['altimg']. "<br>"; ?>
+				<a class="example-image-link" href=".\<?php echo $row['normal'] ?> " data-lightbox="example-set" data-title="Zawisza Czarny"><img class="example-image" src=".\<?php echo $row['small'] ?>" alt="" /></a>
+    <?php }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+
+								</article>
 		
 			
 				<div class="budowa">
