@@ -1,0 +1,354 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Czas generowania: 14 Lut 2018, 20:15
+-- Wersja serwera: 10.1.26-MariaDB
+-- Wersja PHP: 7.1.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Baza danych: `zagle_pytania`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL,
+  `name` text COLLATE utf8_polish_ci NOT NULL,
+  `normal` varchar(150) COLLATE utf8_polish_ci NOT NULL,
+  `small` varchar(150) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `name`, `normal`, `small`) VALUES
+(0, 'Zawisza Czarny', 'img/zawisza.jpg\r\n', 'img/zawiszaSmall.jpg'),
+(1, 'Chopin', 'img/chopin.jpg', 'img/chopinSmall.jpg'),
+(2, 'Dar Młodzieży', 'img/darM.jpg', 'img/darMSmall.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `meteo`
+--
+
+CREATE TABLE `meteo` (
+  `id` int(11) NOT NULL,
+  `tresc` text COLLATE utf8_polish_ci NOT NULL,
+  `odpA` text COLLATE utf8_polish_ci NOT NULL,
+  `odpB` text COLLATE utf8_polish_ci NOT NULL,
+  `odpC` text COLLATE utf8_polish_ci NOT NULL,
+  `answer` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `meteo`
+--
+
+INSERT INTO `meteo` (`id`, `tresc`, `odpA`, `odpB`, `odpC`, `answer`) VALUES
+(1, 'W skali Beauforta 11 to wiatr określany jako: \r\n', 'bardzo silny wiatr \r\n', 'gwałtowny sztorm', 'huragan', 'b'),
+(2, 'Chmura Cumulonimbus niesie ze sobą:', 'tylko słaby wiatr ', 'tylko intensywny opad deszczu \r\n', 'intensywny opad deszczu z silnym i porywistym wiatrem', 'c'),
+(3, 'Altocumulus to chmura: \r\n', 'wysoka kłębiasta', 'niska kłębiasta ', 'średnia kłębiasta', 'c'),
+(4, 'Widzialność 10 Mm określana jest jako:\r\n', 'bardzo dobra\r\n', 'bardzo słaba ', 'umiarkowana \r\n', 'a'),
+(5, 'Chmury Cumulonimbus nie opisuje: ', 'pod ciemną chmurą widoczne są smugi ulewnego\r\ndeszczu', 'chmura ta przynosi wyładowania atmosferyczne ', 'są to białe, cienkie chmury wysoko na niebie przypominające watę\r\n', 'c'),
+(6, 'Nagła zmiana równego dotąd kierunku\r\nwiatru zwiastuje:', 'pogodę bezdeszczową z umiarkowanymi\r\nwiatrami ', 'pogodę wietrzną i pochmurną', 'brak opadów przez kolejne kilka dni', 'b'),
+(7, 'Front ciepły występuje gdy:', 'powietrze chłodne napotyka na przeszkodzie powietrze chłodniejsze ', 'powietrze ciepłe napotyka na przeszkodzie powietrze chłodne\r\n', 'powietrze chłodne napotyka na przeszkodzie\r\npowietrze ciepłe ', 'b'),
+(8, 'Przy przechodzeniu frontu ciepłego\r\ntemperatura: ', 'szybko wzrasta\r\n', 'gwałtownie spada ', 'powoli spada', 'a'),
+(9, 'W skali Beauforta 3 to wiatr określany jako:', 'silny wiatr', 'umiarkowany wiatr \r\n', 'łagodny wiatr', 'c'),
+(10, 'Nimbostratus to chmura: \r\n', 'warstwowa deszczowa', 'pierzasta występująca wysoko ', 'kłębiasta występująca nisko \r\n', 'a'),
+(11, 'Podczas bryzy nocnej wiatr wieje: ', 'od lądu w kierunku morza', 'z morza w kierunku lądu', 'wzdłuż brzegu z północy na południe ', 'a'),
+(12, 'Przy przechodzeniu frontu chłodnego\r\ntemperatura:', 'gwałtownie rośnie ', 'gwałtownie spada', 'powoli rośnie ', 'b'),
+(13, '1 mila morska to: ', '1952 metry \r\n', '1852 metry', '1800 metrów ', 'b'),
+(14, 'Na jeziorze dogania cię burza, która wgląda\r\nna silną. Brzegi jeziora są piaszczyste i\r\nbezpieczne, ale zbyt daleko, by zdążyć przed\r\nburzą. Najbezpieczniejsze dla twojego\r\nmieczowego jachtu będzie gdy:\r\n', 'postawisz spinakera, aby szybciej dopłynąć do brzegu ', 'zrzucisz żagle i płynąc na samym olinowaniu\r\nbędziesz utrzymywał jacht rufą do wiatru, aż do osiągnięcia brzegu', 'postawisz jacht w dryfie \r\n', 'b'),
+(15, 'Silne wiatry zapowiada: ', 'bardzo silny spadek ciśnienia, ciemnoniebieskie niebo \r\n', 'unoszenie się dymu pionowo ku górze, nisko latające ptaki ', 'mgła opadająca nad ranem, czerwony zachód\r\nsłońca ', 'a'),
+(16, 'Zawirowania wiatru powstają:\r\n', 'za wysokim brzegiem, z którego wieje wiatr', 'za płaskim brzegiem, z którego wieje wiatr \r\n', 'na środku dużego jeziora ', 'a'),
+(17, 'Widzisz chmurę z błyskawicami,\r\nprawdopodobnie masz do czynienia z chmurą: ', 'Cumulus', 'Cumulonimbus \r\n', 'Stratus ', 'b'),
+(18, 'W skali Beauforta 8 to wiatr określany jako: ', 'silny sztorm ', 'silny wiatr ', 'sztorm\r\n', 'c'),
+(19, 'Północny wiatr: ', 'wieje z północy \r\n', 'wieje na północ \r\n', 'wieje o północy', 'a'),
+(20, 'Skala Beauforta ma: ', '0 - 9 stopni ', '0 - 10 stopni', '0 - 12 stopni\r\n', 'c'),
+(21, 'Chmury niskie warstwowe to: \r\n', 'cirrusy ', 'stratusy ', 'cumulusy ', 'b'),
+(22, 'Siłę wiatru określamy w: ', 'skali Beauforta \r\n', 'milibarach \r\n', 'metrach \r\n', 'a'),
+(23, 'Przy przechodzeniu frontu ciepłego ciśnienie: ', 'rośnie \r\n', 'spada', 'pozostaje bez zmian', 'b'),
+(24, 'Bryza dzienna charakteryzuje się: ', 'występowaniem wyższego ciśnienia nad wodą\r\nniż nad lądem co powoduje ruch powietrza z nad jeziora nad ląd ', 'występowaniem wyższego ciśnienia nad lądem\r\nniż nad wodą co powoduje ruch powietrza z nad lądu nad jezioro ', 'występowaniem takiej samej wartości ciśnienia\r\nzarówno nad wodą jak i nad lądem, co powoduje\r\nruch mas powietrza pionowo w górę', 'a'),
+(25, 'Ciśnieniem normalnym nazwiemy', '1013 hPa ', '980 hPa', '1023 hPa \r\n', 'a'),
+(26, 'Podczas bryzy dziennej wiatr wieje:', 'od lądu w kierunku morza ', 'z morza w kierunku lądu ', 'wzdłuż brzegu z południa na północ \r\n', 'b'),
+(27, 'Stan morza opisany przez Pedersena\r\nmierzony jest od: \r\n', '0 - 5 P ', '1-10 P', '0 - 9 P\r\n', 'c'),
+(28, 'Systematyczne sprawdzanie prognoz pogody\r\npodczas żeglugi jest: \r\n', 'całkowicie zbędne \r\n', 'niezmiernie przydatne ', 'potrzebne jedynie początkującym żeglarzom', 'b'),
+(29, 'Zachód słońca za gęste chmury jest\r\nzwiastunem:', 'pogorszenia się pogody \r\n', 'utrzymania się dobrej pogody \r\n', 'nadchodzącego deszczu \r\n', 'a'),
+(30, 'W skali Beauforta 1 to wiatr określany jako:', 'łagodny wiatr ', 'silny wiatr ', 'powiew\r\n', 'c'),
+(31, 'Wiatr południowo-zachodni wieje:', 'z południa na zachód', 'z południowego-zachodu na północny-wschód \r\n', 'z północnego-wschodu na południowy-zachód \r\n', 'b'),
+(32, 'Zjawisku dyszy na akwenie wodnym\r\ntowarzyszy: ', 'nagły wzrost siły wiatru', 'intensywny opad deszczu \r\n', 'wyładowania atmosferyczne', 'a'),
+(33, 'Podczas zbliżania się Cumulonimbusa wiatr: ', 'powoli nabiera siły ', 'szybko nabiera siły, czyli tężeje ', 'jest stały i niezmienny ', 'b'),
+(34, 'Chmury warstwowe deszczowe to', 'cirrocumulusy', 'nimbostratusy', 'cirrusy \r\n', 'b'),
+(35, 'Określenie \"bardzo gęsta mgła\" oznacza\r\nzasięg widzialności: ', 'poniżej 50 m', '50 - 100 m', 'powyżej 100 m', 'a'),
+(36, 'Deszczu możemy spodziewać się z chmury:', 'Cirrus ', 'Altocumulus \r\n', 'Nimbostratus\r\n', 'c'),
+(37, 'Przy przechodzeniu frontu chłodnego\r\nwilgotność:', 'znacznie spada \r\n', 'jest wysoka \r\n', 'szybko wzrasta ', 'a'),
+(38, 'Widzialność 0,5 Mm określana jest jako:', 'bardzo słaba ', 'bardzo dobra ', 'umiarkowana', 'a'),
+(39, 'Widząc chmurę Cumulonimbus będziesz: ', 'kontynuował żeglowanie \r\n', 'skierujesz się do najbliższego brzegu, który osłoni cię przed wiatrem ', 'ograniczysz się do ubrania sztormiaka ', 'b'),
+(40, 'Bezpieczne kotwicowisko na jeziorze\r\nznajduje się:', 'po stronie nawietrznej wyspy ', 'po stronie zawietrznej wyspy', 'obie strony wyspy są tak samo niebezpieczne \r\n', 'b'),
+(41, 'Nadejście szkwału przewidzimy widząc:', 'ciemniejszą, bardziej pomarszczoną\r\npowierzchnię wody ', 'jaśniejszą, bardziej wygładzoną powierzchnię wody \r\n', 'siadające na wodzie przed jej nadejściem mewy ', 'a'),
+(42, 'Długotrwałe opady o niezbyt silnym\r\nnatężeniu zwiastują chmury: \r\n', 'Cirrus i Cirrostratus', 'Cumulus i Cumulonimbus ', 'Stratus i Nimbostratus', 'c'),
+(43, 'Halo (pierścień) wokół słońca oznacza: ', 'pogorszenia się pogody, czyli pogodę\r\npochmurną, deszczową i wietrzną\r\n', 'polepszenie pogody \r\n', 'ustabilizowanie się pogody przez 2 najbliższe dni ', 'a'),
+(44, 'Gwałtowny spadek ciśnienia\r\natmosferycznego oznacza: \r\n', 'nadejście spokojnej słonecznej pogody ', 'załamaniem pogody (deszcz, silny wiatr itp.)', 'brak jakichkolwiek zmian', 'b'),
+(45, 'Małe cumulusy (potocznie zwane barankami)\r\nwróżą:', 'ładną, słoneczną pogodę', 'nadejście długotrwałych opadów deszczu', 'nadejście sztormowej pogody \r\n', 'a'),
+(46, 'Podchodząc do wysokiego, zawietrznego\r\nbrzegu musisz liczyć się z: \r\n', 'nagłą zmianą kierunku wiatru ', 'ze wzrostem zafalowania na płyciźnie', 'ze wzrostem siły wiatru od strony lądu \r\n', 'b'),
+(47, 'W skali Beauforta 7 to wiatr określany\r\njako: ', 'bardzo silny wiatr', 'silny wiatr', 'sztorm \r\n', 'a'),
+(48, 'W skali Beauforta 4 to wiatr określany\r\njako: \r\n', 'świeży wiatr ', 'umiarkowany wiatr \r\n', 'silny wiatr', 'b'),
+(49, 'W skali Beauforta 6 to wiatr określany\r\njako', 'sztorm', 'silny wiatr \r\n', 'świeży wiatr ', 'b'),
+(50, 'Przy przechodzeniu frontu ciepłego\r\nwystępują chmury:\r\n', 'stratus, nimbostratus', 'cumulus, cirrus \r\n', 'cumulonimbus \r\n', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `przepisy`
+--
+
+CREATE TABLE `przepisy` (
+  `id` int(11) NOT NULL,
+  `tresc` text COLLATE utf8_polish_ci NOT NULL,
+  `odpA` text COLLATE utf8_polish_ci NOT NULL,
+  `odpB` text COLLATE utf8_polish_ci NOT NULL,
+  `odpC` text COLLATE utf8_polish_ci NOT NULL,
+  `answer` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `przepisy`
+--
+
+INSERT INTO `przepisy` (`id`, `tresc`, `odpA`, `odpB`, `odpC`, `answer`) VALUES
+(1, 'Gdzie należy umieścić na jachcie\r\nmorskim flagę państwa, do którego się płynie,\r\nprzebywa w nim lub wraca:', ' na flagsztoku ', 'pod lewym salingiem grotmasztu', ' pod prawym salingiem grotmasztu \r\n', 'c'),
+(2, 'Jacht zawietrzny ustępuje jachtowi\r\nnawietrznemu:', 'tak \r\n', ' nie ', 'zawsze ustępuje jacht mniejszy', 'b'),
+(3, 'W nocy prom na uwięzi nosi światła: ', 'zielone nad czerwonym widoczne ze wszystkich\r\nstron \r\n', 'zielone nad białym widoczne ze wszystkich stron \r\n', 'białe nad zielonym widoczne ze wszystkich stron \r\n', 'b'),
+(4, 'Zauważyłeś jacht, który pod lewym\r\nsalingiem ma wywieszoną flagę \"A\"\r\nMiędzynarodowego Kodu Sygnałowego.\r\nOznacza to:', 'wzywam pomocy ', 'mam nurka pod wodą\r\n', ' stoję na kotwicy \r\n', 'b'),
+(5, 'W dzień prom na uwięzi jest\r\noznakowany', 'czarną kulą ', 'zieloną kulą', 'zieloną kulą nad białym walcem', 'b'),
+(6, 'Bandera biało-czerwona bez dodatkowych\r\nsymboli należy do:', 'polskich statków morskich \r\n', 'polskiej żeglugi śródlądowej \r\n', 'marynarki wojennej \r\n', 'b'),
+(7, 'Przestrzegając zasad ochrony środowiska\r\nnaturalnego powinniśmy posiadać na jachcie: ', 'worki na śmieci i łopatkę', 'silne środki piorące - detergenty \r\n', ' przepisy o ochronie środowiska \r\n', 'a'),
+(8, 'W skład gali flagowej wchodzą: ', 'bandery wszystkich państw bałtyckich \r\n', 'flagi i proporce klubowe ', 'flagi Międzynarodowego Kodu Sygnałowego', 'c'),
+(9, 'W dzień statki z pierwszeństwem przejścia\r\nnoszą dodatkowo: ', 'czerwony trójkątny proporzec umieszczony na\r\nrufie statku ', 'czerwoną flagę \r\n', 'czerwony trójkątny proporzec umieszczony na\r\ndziobie statku\r\n', 'c'),
+(10, 'Podstawowym dokumentem jachtu\r\nśródlądowego jest: ', 'dowód rejestracyjny jachtu ', 'patent żeglarski kierującego jachtem', 'świadectwo żeglugowe ', 'a'),
+(11, 'W razie zaistnienia wypadku żeglugowego\r\nprowadzący jacht jest zobowiązany do\r\nsporządzenia: ', 'protokołu powypadkowego (zgłoszenie szkody) z podpisami uczestników zdarzenia \r\n', 'wystarczy zgłoszenie na policji \r\n', 'zawiadomienie pisemne do Okręgowego\r\nZwiązku żeglarskiego ', 'a'),
+(12, 'Sygnał składający się z flagi i umieszczonej\r\nnad nią lub pod nią kuli oznacza:', 'potrzebuję pomocy lekarskiej \r\n', 'wzywam pomocy ', 'statek zajęty trałowaniem min', 'b'),
+(13, 'W nocy statki stojące na kotwicy noszą\r\nświatła: ', 'burtowe i białe widoczne ze wszystkich stron ', 'białe w części dziobowej i drugie białe w części\r\nrufowej, widoczne ze wszystkich stron', 'dodatkowo czerwone światło widoczne ze\r\nwszystkich stron \r\n', 'b'),
+(14, 'Osoba prowadząca jacht na wodach\r\nśródlądowych, którego długość przekracza 7,5 m\r\npowinna ze sobą posiadać: \r\n', 'patent żeglarski \r\n', 'sportową książeczkę żeglarską i patent żeglarski \r\n', 'kartę plywacką i patent ', 'a'),
+(15, 'W nocy statki, które utraciły manewrowość\r\ndodatkowo oznakowane są: ', 'dwoma białymi światłami widocznymi ze\r\nwszystkich stron \r\n', 'dwoma czerwonymi światłami widocznymi ze\r\nwszystkich stron \r\n', 'migającym czerwonym światłem \r\n', 'b'),
+(16, 'Jacht żaglowy wyprzedza statek o napędzie\r\nmechanicznym, pierwszeństwo ma: ', 'statek mechaniczny (jednostka wyprzedzana) \r\n', 'jacht żaglowy (zgodnie z prawem drogi) \r\n', ' przepisy nie precyzują takiego zdarzenia \r\n', 'a'),
+(17, 'Szesnastoletni żeglarz jachtowy jest\r\nuprawniony do prowadzenia na wodach\r\nśródlądowych jachtów o długości kadłuba: ', 'do 7,5 m bez nadzoru osoby pełnoletniej ', 'do 8,5 m', 'dowolnej, ale pod nadzorem osoby pełnoletniej\r\nposiadającej patent żeglarski\r\n', 'c'),
+(18, ' Jacht żaglowy płynący jednocześnie na\r\nżaglach i na silniku traktowany jest: \r\n', 'jako statek żaglowy \r\n', ' jako statek o napędzie mechanicznym', 'przepisy nie regulują tego zagadnienia ', 'b'),
+(19, ' Osoba posiadająca stopień żeglarza\r\njachtowego jest uprawniona do prowadzenia na\r\nwodach śródlądowych jachtów o powierzchni\r\nżagli', ' do 15 m2 \r\n', ' do 40 m2 \r\n', ' bez ograniczeń\r\n', 'c'),
+(20, 'Żeglarz jachtowy uprawniony jest do\r\nprowadzenia jachtów żaglowych na wodach\r\nśródlądowych: \r\n', 'bez ograniczenia powierzchni ożaglowania', 'długości kadłuba do 8 m ', 'o powierzchni ożaglowania do 15 m2, a po\r\nukończeniu 16 lat do 20 m2', 'a'),
+(21, 'Przy śluzie pierwszeństwo mają statki: ', 'wchodzące do śluzy ', 'duże, niezależnie czy wchodzą czy wychodzą ze śluzy ', 'wychodzące ze śluzy', 'c'),
+(22, 'Banderę na jachcie stojącym w porcie\r\nopuszcza się: ', 'o zachodzie słońca', ' o godz. 22:00 ', 'jak kapitan zejdzie z pokładu \r\n', 'a'),
+(23, 'Na wodzie w nocy widać zataczane kręgi\r\nbiałym światłem, oznacza to: ', 'nie podchodźcie do nas \r\n', 'wzywam pomocy \r\n', 'łódź wiosłowa w nocy ', 'b'),
+(24, 'Trzy krótkie dźwięki nadawane na drodze\r\nśródlądowej przez statek oznaczają:', ' zmieniam kurs w prawo', 'zmieniam kurs w lewo ', ' moje maszyny pracują wstecz', 'c'),
+(25, 'Światło burtowe lewej burty ma kolor: ', 'zielony', 'czerwony \r\n', 'żółty \r\n', 'b'),
+(26, 'Podczas postoju jachtu w porcie\r\nnieczystości i odpadki odprowadzamy do:', ' basenu portowego ', 'zbiorników na jachcie, które po napełnieniu\r\nwypróżniamy do basenu portowego ', 'zbiorników, które opróżniamy na lądzie', 'c'),
+(27, 'Jacht płynący lewym halsem ustępuje z\r\ndrogi jachtowi płynącemu prawym halsem: \r\n', ' tak', 'nie \r\n', 'zawsze ustępuje jacht mniejszy', 'a'),
+(28, 'Ciągła seria podwójnych krótkich\r\ndźwięków na drodze śródlądowej oznacza: ', 'wzywam pomocy', 'niebezpieczeństwo zderzenia \r\n', ' człowiek za burtą\r\n', 'c'),
+(29, 'Światło burtowe prawej burty ma kolor: ', ' czerwony', 'żółty \r\n', 'zielony\r\n', 'c'),
+(30, 'Dwa jachty płyną przeciwnymi halsami,\r\nustępuje: ', 'jacht płynący prawym halsem \r\n', 'jacht płynący lewym halsem \r\n', 'jacht większy', 'b'),
+(31, 'Jeden krótki dźwięk nadawany przez statek\r\nna drodze śródlądowej oznacza: ', 'moje maszyny pracują wstecz \r\n', 'uwaga \r\n', 'zmieniam kurs w prawo', 'c'),
+(32, 'W myśl przepisów żeglugowych noc to: ', 'okres pomiędzy zachodem a wschodem słońca', ' okres pomiędzy godz. 22:00 a godz. 06:00 ', 'okres od godziny po zachodzie słońca do\r\ngodziny przed wschodem \r\n', 'a'),
+(33, 'Jeden krótki, jeden długi i dwa krótkie\r\ndźwięki oznaczają: \r\n', 'zatrzymajcie natychmiast swój statek ', ' mam zamiar wyprzedzić waspo waszej prawej\r\nburcie', 'mam zamiar zawrócić w prawo ', 'a'),
+(34, 'Jeden długi dźwięk nadawany przez statek\r\nna drodze śródlądowej oznacza: ', 'uwaga ', 'moje maszyny pracują wstecz ', 'nie mogę manewrować', 'a'),
+(35, 'Cztery krótkie dźwięki nadawane na\r\ndrodze śródlądowej przez statek oznaczają: \r\n', 'statek zajęty pracami podwodnymi \r\n', 'człowiek za burtą \r\n', 'nie mogę manewrować\r\n', 'c'),
+(36, 'Czarny stożek wierzchołkiem w dół\r\nwywieszony na statku oznacza: \r\n', 'pojedynczy mały statek w ruchu', 'statek płynący jednocześnie na żaglach i na silniku ', 'statek na kotwicy \r\n', 'b'),
+(37, 'W nocy statki z materiałami\r\nniebezpiecznymi noszą dodatkowo światła w\r\nkolorze: \r\n', 'zielonym \r\n', 'czerwonym \r\n', 'niebieskim\r\n', 'c'),
+(38, 'Długi dźwięk nadawany przez statki trwa:', '3 sekundy \r\n', '4 sekundy \r\n', '6 sekund ', 'b'),
+(39, 'Proporzec klubowy na jachcie należy\r\nnosić: \r\n', 'pod lewym salingiem \r\n', 'na rufie jachtu \r\n', 'na topie masztu \r\n', 'a'),
+(40, 'Osoba posiadająca patent żeglarza\r\njachtowego na śródlądziu jest uprawniona do\r\nprowadzenia jachtów:', 'tylko jednomasztowych \r\n', 'tylko dwumasztowych \r\n', 'ilość masztów nie ma znaczenia\r\n', 'c'),
+(41, 'Wielka gala flagowa podnoszona podczas\r\npostoju jachtu biegnie:', 'od dziobu do rufy jachtu', 'od rufy do dziobu jachtu \r\n', 'od burty prawej do lewej \r\n', 'a'),
+(42, 'Żółte światło widoczne na rufie statku\r\noznacza: \r\n', 'statek główny pociągu holowniczego ', 'ostatni statek w pociągu holowniczym \r\n', 'prom na uwięzi \r\n', 'a'),
+(43, 'Żeglarz zauważył żółtą kulę na innej\r\njednostce. Oznacza to:', 'statek, na którym panuje epidemia', 'statek poławiający', ' statek holowany', 'c'),
+(44, 'Jeżeli dwa jachty płyną tym samym\r\nhalsem i występuje ryzyko zderzenia to jacht\r\nnawietrzny: \r\n', 'ma pierwszeństwo', 'oba jachty skręcają w prawo ', 'musi ustąpić jachtowi zawietrznemu', 'c'),
+(45, 'Przy nadejściu nowego roku najmłodszy\r\nzałogant wybija wyjątkowo: \r\n', '8 szklanek \r\n', '16 szklanek ', '4 szklanki ', 'a'),
+(46, 'W nocy na drodze śródlądowej widoczna\r\njest grupa świateł:zielone, a nieco wyżej\r\nustawione pionowe, od góry zielone oraz białe,\r\njest to: ', 'statek, który utracił manewrowość ', 'jacht żaglowy w drodze', 'prom przemieszczający się swobodnie', 'c'),
+(47, 'Czarna kula wywieszona na dziobie\r\njachtu oznacza:', 'pojedynczy mały statek w ruchu ', 'statek płynący jednocześnie na żaglach i na silniku', 'statek na kotwicy', 'c'),
+(48, 'Dwa krótkie dźwięki nadawane na drodze\r\nśródlądowej przez statek oznaczają: \r\n', 'zmieniam kurs w prawo \r\n', 'moje maszyny pracują wstecz', 'zmieniam kurs w lewo\r\n', 'c'),
+(49, 'Jeden krótki, jeden długi i dwa krótkie\r\ndźwięki oznaczają: \r\n', 'zatrzymajcie natychmiast swój statek \r\n', 'mam zamiar wyprzedzić was po waszej prawej\r\nburcie \r\n', 'mam zamiar zawrócić w prawo ', 'a'),
+(50, 'Jachty śródlądowe zwolnione są od\r\nobowiązku noszenia bandery: \r\n', 'tak \r\n', 'nie', 'tylko jednostki poniżej 8m długości', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `ratownictwo`
+--
+
+CREATE TABLE `ratownictwo` (
+  `id` int(11) NOT NULL,
+  `tresc` text COLLATE utf8_polish_ci NOT NULL,
+  `odpA` text COLLATE utf8_polish_ci NOT NULL,
+  `odpB` text COLLATE utf8_polish_ci NOT NULL,
+  `odpC` text COLLATE utf8_polish_ci NOT NULL,
+  `answer` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `ratownictwo`
+--
+
+INSERT INTO `ratownictwo` (`id`, `tresc`, `odpA`, `odpB`, `odpC`, `answer`) VALUES
+(1, 'Żeglując z dziećmi możesz ze względów\r\nbezpieczeństwa mieć dodatkowo zainstalowaną:', 'windę kotwiczną ', 'siatkę na relingu ', 'talię grota \r\n', 'b'),
+(2, 'Widząc wypadającego człowieka z burtę, a\r\nmogąc go złapać tuż przy burcie należy:', 'pozwolić mu wpaść do wody ', 'wykorzystać sytuację i spokojnie przetrenować\r\nmanewr „człowiek za burtą” ', 'zaalarmować załogę i spróbować go złapać\r\n', 'c'),
+(3, 'Żeglując prawym halsem pęka prawa wanta: \r\n', 'bez jednej wanty da się żeglować \r\n', 'natychmiast zmieniasz hals \r\n', 'pozostajesz na prawym halsie i usuwasz usterkę', 'b'),
+(4, 'W czasie żeglugi najbezpieczniej poruszać się: ', 'burtą nawietrzną', 'burtą zawietrzną', 'burtą lewą\r\n', 'a'),
+(5, 'Do gaszenia urządzeń elektrycznych pod\r\nnapięciem nie należy stosować gaśnic:', 'śniegowych', 'pianowych ', 'halonowych \r\n', 'b'),
+(6, 'Ratowaniem ludzkiego życia na morzu\r\nzajmują się jednostki: \r\n', 'SAR', 'GMDSS \r\n', 'SART ', 'a'),
+(7, 'W czasie żeglugi: \r\n', 'najczęściej stoimy', 'można tylko siedzieć \r\n', 'zwykle siedzimy, pozycję stojącą przyjmujemy z zachowaniem szczególnej ostrożności\r\n', 'c'),
+(8, 'Zauważasz pożar na dziobie jachtu,\r\nzmieniasz kurs na:', 'półwiatr ', 'baksztag', 'bajdewind ', 'b'),
+(9, 'Prawidłowa obsługa kuchenki gazowej na\r\njachcie przy zakręcaniu to: ', 'zakręcenie kurka przy kuchence, główny zawór zakręca się jedynie podczas wymiany butli gazowej ', 'zakręcenie zaworu głównego przy butli gazowej a po zgaśnięciu palnika, kurka kuchenki gazowej \r\n', 'kolejność nie ma znaczenia \r\n', 'b'),
+(10, 'Żeglując bajdewindem widzisz rozdarcie na\r\nfoku: ', 'zrzucasz i foka i grota, na silniku jak najszybciej płyniesz do najbliższego portu ', 'zrzucasz foka, kontynuujesz żeglugę na samym grocie i w miarę możliwości wymieniasz foka na innego \r\n', 'kontynuujesz żeglugę, małe rozdarcia nie są\r\ngroźne ', 'b'),
+(11, 'Żeglując bajdewindem w pobliżu brzegu\r\nwidzisz rozdarcie na grocie: ', 'zrzucasz grota i zmieniasz hals by oddalać się od brzegu \r\n', 'zrzucasz grota, żeglujesz na samym foku nie\r\nzmieniając kursu ', 'kontynuujesz żeglugę, małe rozdarcia nie są\r\ngroźne ', 'a'),
+(12, 'Człowiekowi, który wypadł za burtę, koło\r\nratunkowe należy rzucać blisko niego: ', 'od jego strony nawietrznej \r\n', 'od jego strony zawietrznej ', 'od tej strony, w którą ma zwróconą twarz \r\n', 'a'),
+(13, 'Przy awariach olinowania stałego należy:', 'kontynuować żeglugę \r\n', 'jak najszybciej sprawić, by uszkodzony element nie pracował', 'spokojnie usuwać awarię mimo tego, iż uszkodzony element pracuje', 'a'),
+(14, 'Pierwszą czynnością po wywróceniu jachtu\r\njest: ', 'sprawdzenie stanu załogi ', 'zabezpieczenie jachtu przed ‘grzybem’', 'zabezpieczenie osprzętu i wyposażenia\r\nruchomego przed zaginięciem', 'a'),
+(15, 'W czasie manewru sztrandowania jacht\r\nustawiamy: \r\n', 'dziobem do wiatru i fali ', 'rufą do wiatru i fali ', 'burtą do wiatru i fali\r\n', 'c'),
+(16, 'Używanie silnika podczas wykonywania\r\nmanewru „podejścia do człowieka” jest: \r\n', 'niedopuszczalne ze względów bezpieczeństwa', 'profanacją odwiecznych zasad żeglarstwa ', 'dopuszczalne byle manewr był bezpieczny i\r\nskuteczny\r\n', 'c'),
+(17, 'Powierzchnię ożaglowania dostosowujemy\r\ndo: \r\n', 'humoru sternika \r\n', 'tylko warunków pogodowych \r\n', 'warunków pogodowych i umiejętności załogi\r\n', 'c'),
+(18, 'Sztrandowanie jest to: \r\n', 'niezamierzone wejście na mieliznę \r\n', 'celowe wejście na mieliznę\r\n', 'wyciąganie jachtu na brzeg po sezonie', 'b'),
+(19, 'Do koła ratunkowego wchodzimy : ', 'podpływając pod koło \r\n', 'chwytamy się obiema rękoma', 'zakładamy koło przez głowę i zakładamy pod\r\npachy\r\n', 'c'),
+(20, 'Podczas żeglugi prawym halsem, lewa wanta\r\nurywa się, należy:', 'zachować spokój, i wezwać WOPR \r\n', 'pozostać na prawym halsie i spróbować usunąć usterkę', 'zmienić hals na przeciwny ', 'b'),
+(21, 'W wypadku uszkodzenia poszycia należy: \r\n', 'dopóki woda nie wylewa się z zęzy nie ma się czym przejmować \r\n', 'na spokojnie wylewać wodę wiadrami z wnętrza jachtu ', 'jak najszybciej zlokalizować i powstrzymać\r\ngłówny strumień wody dostający się do wnętrza jachtu', 'c'),
+(22, 'Aby jacht podczas wywrotki nie zanurzył się\r\nmasztem w dół (nie zrobił \"grzyba\") należy: ', 'holować jacht do brzegu', 'stanąć na mieczu zwiększając moment prostujący i próbować postawić jacht \r\n', 'wezwać pomoc i jak najszybciej odpłynąć od\r\njachtu ', 'b'),
+(23, 'Zauważasz pożar na rufie jachtu, zmieniasz\r\nkurs na', 'półwiatr ', 'baksztag \r\n', 'bajdewind', 'c'),
+(24, 'Podczas poruszania się po jachcie stosujemy\r\nzasadę: \r\n', 'manewru „Monachijskiego”', 'jedna ręka dla jachtu druga dla mnie \r\n', 'wszystkie ręce na pokład ', 'b'),
+(25, 'Podczas kładzenia lub stawiania masztu\r\nnależy:', 'zachować szczególną ostrożność i nie\r\nwykonywać poleceń sternika', 'zachować szczególną ostrożność i dokładnie\r\nwykonywać polecenia sternika ', 'zachować szczególną wrogość wobec sternika', 'b'),
+(26, 'Morskie Ratownicze Centrum\r\nKoordynacyjne w Polsce znajduje się w:', 'Gdańsku \r\n', 'Świnoujściu \r\n', 'Gdyni\r\n', 'c'),
+(27, 'Na jachcie mieczowo-balastowym lub\r\nbalastowym człowieka z wody na pokład\r\npodejmujemy z burty: ', 'zawietrznej \r\n', 'nawietrznej', 'nie ma znaczenia, z której burty ', 'a'),
+(28, 'Światowy Morski System Łączności\r\nAlarmowej i Bezpieczeństwa to inaczej: ', 'SAR ', 'GPS ', 'GMDSS', 'c'),
+(29, 'Każdy jacht wyposażony w silnik musi mieć\r\nna pokładzie: \r\n', 'koc gaśniczy ', 'gaśnicę', 'telefon komórkowy ', 'b'),
+(30, 'Cumę z jachtu na ląd powinno się podawać: ', 'przyknagowaną do jachtu, skacząc z nią w ręku', 'przyknagowaną do jachtu, rzucając ją z jachtu', 'zaknagowaną w połowie długości \r\n', 'b'),
+(31, 'Objawami umiarkowanej hipotermii są: ', 'odrętwienie, brak dreszczy, utrata orientacji, trudność w mówieniu', 'sztywność mięśni, utrata przytomności, źrenice rozszerzone, puls słaby \r\n', 'dreszcze \r\n', 'a'),
+(32, 'Po wywrotce jachtu dowodzący w pierwszej\r\nkolejności powinien:', 'upewnić się, czy wszyscy członkowie załogi są na powierzchni \r\n', 'sprawdzić liczebność załogi', 'zabezpieczyć osprzęt jachtu \r\n', 'a'),
+(33, 'Manewr „podejście do człowieka” musi\r\nbyć: \r\n', 'bezpieczny i skuteczny \r\n', 'skuteczny ', 'elegancki ', 'a'),
+(34, 'W czasie żeglugi liny:', 'mogą być porozrzucane ', 'muszą być sklarowane by nikt się na nich nie poślizgnął \r\n', 'wszystkie nie przyczepione na sztywno liny\r\nmożna pozostawić na lądzie', 'b'),
+(35, 'W czasie żeglugi należy zwrócić szczególną\r\nuwagę na:', 'przelatujący bom \r\n', 'pracę steru', 'odbijacze \r\n', 'a'),
+(36, 'Objawami płytkiej hipotermii są: \r\n', 'dreszcze ', 'sztywność mięśni, rozszerzone źrenice, słabe bicie serca', 'odrętwienie, brak dreszczy, utrata orientacji,\r\ntrudność w mówieniu ', 'a'),
+(37, 'Refowanie jest przejawem: ', 'zdrowego rozsądku', 'brawury ', 'tchórzostwa sternika \r\n', 'a'),
+(38, 'Żeglując lewym halsem pęka prawa wanta: ', 'natychmiast zmieniasz hals \r\n', 'pozostajesz na lewym halsie i próbujesz usunąć usterkę', 'da się żeglować bez jednej wanty \r\n', 'b'),
+(39, 'Koło ratunkowe do osoby znajdującej się w\r\nwodzie rzucamy:', 'na zawietrzną stronę osoby w wodzie ', 'jeśli osoba w wodzie jest praworęczna to z\r\nprawej strony, jeśli leworęczna, z lewej \r\n', 'na nawietrzną stronę osoby w wodzie', 'c'),
+(40, 'Osobie wyziębionej można podawać\r\nalkohol: ', 'tak \r\n', 'nie', 'nie ma to znaczenia \r\n', 'b'),
+(41, 'Zapalanie zapalniczki celem oświetlenia\r\nwnętrza bakisty z paliwem jest: \r\n', 'niedopuszczalne i niebezpieczne ', 'możliwe gdy ma się gotową gaśnicę pod ręką', 'dopuszczalne tylko podczas żeglugi \r\n', 'a'),
+(42, 'Bardziej niebezpieczny jest przeciek\r\nkadłuba: \r\n', 'poniżej linii wodnej ', 'powyżej linii wodnej ', 'nowoczesne jachty nie przeciekają', 'a'),
+(43, 'Jakiego typu gaśnicą najlepiej ugasić pożar\r\nsilnika na jachcie: \r\n', 'pianową \r\n', 'proszkową', 'piaskową', 'b'),
+(44, 'Podczas żeglugi bajdewindem zauważasz\r\npękający sztag, co robisz: \r\n', 'natychmiast odpadasz do fordewindu', 'luzujesz żagle i stajesz w dryf ', 'wchodzisz w linię wiatru ', 'a'),
+(45, 'W czasie żeglugi w bardzo słoneczny dzień\r\nnoszenie nakrycia głowy jest: ', 'ekstrawagancją \r\n', 'nie ma takiej potrzeby ', 'konieczne, ochrona przed udarem\r\n', 'c'),
+(46, 'Człowiekowi, który wypadł do wody w\r\npierwszej kolejności rzucamy zwykle: \r\n', 'pas ratunkowy ', 'koło ratunkowe ', 'pas bezpieczeństwa ', 'b'),
+(47, 'Do środków asekuracyjnych należą: \r\n', 'pas (szelki bezpieczeństwa), koło ratunkowe', 'kamizelka asekuracyjna, pas ratunkowy \r\n', 'pas (szelki) bezpieczeństwa, kamizelka\r\nasekuracyjna', 'c'),
+(48, 'Na śródlądziu wzywamy pomocy: ', 'zataczając flagą lub podobnym przedmiotem\r\nkręgi \r\n', 'wyrzucając za burtę dużą ilość przedmiotów', 'pozdrawiając dłonią przepływające obok jachty ', 'a'),
+(49, 'Na śródlądziu wzywamy pomocy: ', 'nadając dowolne sygnały świetlne', 'nadając sygnał świetlny składający się z trzech krótkich błysków, trzech długich błysków i trzech krótkich błysków', 'nadając sygnał świetlny składający się z trzech długich błysków, trzech krótkich błysków i trzech długich błysków \r\n', 'b'),
+(50, 'Ogrzewanie człowieka, który uległ\r\nprzechłodzeniu po wyjęciu z wody należy\r\nprzeprowadzać: \r\n', 'stopniowo', 'szybko \r\n', 'nie ma potrzeby ogrzewania go \r\n', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `uzytkownicy`
+--
+
+CREATE TABLE `uzytkownicy` (
+  `id` int(11) NOT NULL,
+  `user` text COLLATE utf8_polish_ci NOT NULL,
+  `pass` text COLLATE utf8_polish_ci NOT NULL,
+  `email` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `uzytkownicy`
+--
+
+INSERT INTO `uzytkownicy` (`id`, `user`, `pass`, `email`) VALUES
+(1, 'adam', '1234', 'adam@gmail.com'),
+(2, 'marek', 'asdfg', 'marek@gmail.com'),
+(18, 'admin', '$2y$10$YBuoL9OG92x.Brd4JcqVnuLIeA.8NIbcCXjgaaQWfN/bAK7q8GdMe', 'admin@admin.pl'),
+(14, 'nowy', '$2y$10$inILx5pbKNlzGVEXMGrCz.HOdMIC5zoytuF/iaoJtrkXrj1Z.XGCm', 'nowy@gmail.com'),
+(15, 'ktos', '$2y$10$6oWPcYIJacAZIvpy4LW39O1AXS4OtOzunQWt/Cs4acAfSCFvWTgEu', 'ktos@gmail.com'),
+(16, 'aga', '$2y$10$GKJsNOWfCJbAxpEX43T.BOzJOQC0fh/tKHcg96rkZWAuKmFPN6qNe', 'aga@gmail.com'),
+(17, 'abc', '$2y$10$IxLEa3uFvW4841bd384KJ.ftgQ1Jy28Hud07s4akmAHL0N9b01Xua', 'abc@gmail.com'),
+(19, 'qwe', '$2y$10$2tipN0LrD60cFRPkzRp30OtEG18aLP4rjaN78hP0IoZGECcL8eKAK', 'qwe@gmail.com'),
+(20, 'rty', '$2y$10$fYsy/qlF14eWD7iKrl2GZeya9khRo3JAQ4/YGq8mkb/mTcKARM1YK', 'rty@gmail.com');
+
+--
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `meteo`
+--
+ALTER TABLE `meteo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `przepisy`
+--
+ALTER TABLE `przepisy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ratownictwo`
+--
+ALTER TABLE `ratownictwo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `meteo`
+--
+ALTER TABLE `meteo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT dla tabeli `przepisy`
+--
+ALTER TABLE `przepisy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT dla tabeli `ratownictwo`
+--
+ALTER TABLE `ratownictwo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
